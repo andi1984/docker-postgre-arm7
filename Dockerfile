@@ -6,7 +6,7 @@
 #
 
 FROM armv7/armhf-ubuntu:16.04
-MAINTAINER joannesource@protonmail.com
+MAINTAINER mail@andi1984.de
 
 # Add the PostgreSQL PGP key to verify their Debian packages.
 # It should be the same key as https://www.postgresql.org/media/keys/ACCC4CF8.asc 
@@ -59,7 +59,7 @@ RUN echo "listen_addresses='*'" >> /etc/postgresql/9.5/main/postgresql.conf
 EXPOSE 5432
 
 # Add VOLUMEs to allow backup of config, logs and databases
-#VOLUME	["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
+VOLUME	["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 
 # Set the default command to run when starting the container
 CMD ["/usr/lib/postgresql/9.5/bin/postgres", "-D", "/var/lib/postgresql/9.5/main", "-c", "config_file=/etc/postgresql/9.5/main/postgresql.conf"]
